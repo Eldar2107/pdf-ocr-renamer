@@ -18,3 +18,26 @@ This Python script automatically extracts text from scanned PDF documents using 
    ```bash
    git clone [https://github.com/Eldar2107/pdf-ocr-renamer.git](https://github.com/Eldar2107/pdf-ocr-renamer.git)
    cd pdf-ocr-renamer
+# Smart PDF Barcode & Date Organizer 📂🤖
+
+Bu Python skripti skan olunmuş (şəkil formatındakı) PDF sənədlərini süni intellekt əsaslı **OCR (Optical Character Recognition)** vasitəsilə oxuyur, içindən **barkod** və **tarix** məlumatlarını `regex` ilə aşkarlayır, ardından faylları avtomatik olaraq müvafiq barkod adlarına uyğun qovluqlara çeşidləyib köçürür.
+
+---
+
+## 🚀 Əsas Özəlliklər
+
+* **Yüksək Keyfiyyətli Skan:** `PyMuPDF` vasitəsilə səhifələri 300 DPI keyfiyyətində şəkilə çevirir.
+* **Süni İntellektlə Oxuma:** `EasyOCR` istifadə edərək şəkillərdəki mətnləri tanıyır (CPU rejimində işləyir).
+* **Ağıllı Barkod Axtarışı:** Standart barkodları (`3 hərf + 6 rəqəm`) tapır və OCR xətalarını (`O` -> `0`, `I/L` -> `1`, `Z` -> `2`) avtomatik düzəldir.
+* **Tarix Standartlaşdırması:** Müxtəlif tarix formatlarını (`DD.MM.YYYY`, `DD/MM/YYYY`) tapıb `DD-MM-YYYY` formatına çevrir.
+* **Avtomatik Qovruqlama (Yeni!):** Faylları sadəcə adlandırmır, həm də təyinat qovluğunda (`destination_root`) hər barkod üçün ayrıca qovluq açıb ora daşıyır (`shutil.move`).
+* **Dublikat Qoruması:** Eyni adla fayl mövcud olduqda silinmənin qarşısını almaq üçün sonuna sıra nömrəsi əlavə edir (`_(1)`, `_(2)`).
+
+---
+
+## 📦 Tələb Olunan Kitabxanalar
+
+Proqramı işlətmək üçün aşağıdakı kitabxanaları quraşdırmalısınız:
+
+```bash
+pip install pymupdf easyocr
